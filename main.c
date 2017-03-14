@@ -81,8 +81,8 @@ int print_node(struct list_head *head)
 {
     if(NULL != head){
 		struct my_node *node = list_entry(head, struct my_node, list) ;
-		printf("%d ",node->data);
 		print_node(node->list.left);
+		printf("%d ",node->data);
 		print_node(node->list.right);
 	}
 	return 0;
@@ -118,13 +118,17 @@ int main(int argc, const char *argv[])
 {
     LIST_HEAD(my_list);
 	int i;
+	int num[10];
+	printf("input 10 different number\n");
+	for(i = 0;i<10;i++) scanf("%d",&num[i]);
     for ( i=0; i < 10; i++) {
         struct my_node *node = malloc(sizeof(struct my_node));
-        node->data = i;
+        node->data = num[i];
 		node->list.right = NULL;
 		node->list.left = NULL;
         list_add(&my_list, &(node->list));
     }
+	printf("order is :\n");
 	print_head(&my_list);
 	tree_destroy(&my_list);
     return 0;

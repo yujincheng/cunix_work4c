@@ -1,0 +1,3 @@
+PROJECT (main)
+SET(SRC_LIST main.c)
+ADD_EXECUTABLE(main ${SRC_LIST})
